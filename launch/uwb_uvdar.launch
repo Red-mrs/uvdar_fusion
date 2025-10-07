@@ -1,0 +1,16 @@
+<launch>
+  <arg name="debug" default="false"/>
+  <arg name="calib" default="$(optenv CALIB 25003899)"/>
+  <arg name="calibrations_folder" default="$(find mrs_uav_deployment)/config/uvdar_calibrations"/>
+  <arg name="uvdar_topic" default="blinkers_seen_left"/>
+  <node pkg="uwb_uvdar_fusion" type="uwb_uvdar_fusion_node" name="uwb_uvdar_fusion_node" output="screen">
+    <param name="debug_mode" value="$(arg debug)"/>
+    <param name="uvdar_topic" value="$(arg uvdar_topic)"/>
+    <rosparam param="calib_files" subst_value="true">
+        ["$(arg calibrations_folder)/camera_calibrations/calib_results_bf_uv_$(arg calib).txt"]
+      </rosparam>
+  </node>
+
+
+
+</launch>

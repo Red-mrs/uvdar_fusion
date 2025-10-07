@@ -1,0 +1,12 @@
+<launch>
+  <!-- Run uvdar_ros_driver -->
+  <include file="$(find uvdar_ros_driver)/launch/uvdar.launch">
+    <arg name="serial_number" value="207A32663232"/>
+  </include>
+
+  <!-- Run uvdar_core -->
+  <include file="$(find uvdar_core)/launch/camera_only_one_sided.launch"/>
+
+  <!-- Run uwb_uvdar_fusion -->
+  <include file="$(find uwb_uvdar_fusion)/launch/uwb_uvdar.launch"/>
+</launch>
